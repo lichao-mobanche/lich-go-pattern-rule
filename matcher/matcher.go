@@ -25,9 +25,9 @@ func New(mt MatcherType) *Matcher {
 }
 
 // Match TODO
-func (m *Matcher) Match(rawPath string) (string, interface{}) {
-	m.Lock()
-	defer m.Unlock()
+func (m Matcher) Match(rawPath string) (string, interface{}) {
+	m.RLock()
+	defer m.RUnlock()
 	p, r := m.innerMatcher.Match(rawPath)
 	return string(p), r
 }
@@ -49,7 +49,7 @@ func (m Matcher) Get(pattern string) (string, interface{}) {
 }
 
 //Delete TODO
-func (m Matcher) Delete(pattern string) (string, interface{}) {
+func (m *Matcher) Delete(pattern string) (string, interface{}) {
 	m.Lock()
 	defer m.Unlock()
 	p, r := m.innerMatcher.Delete(Pattern(pattern))
@@ -57,7 +57,7 @@ func (m Matcher) Delete(pattern string) (string, interface{}) {
 }
 
 // Iter TODO
-func (m *Matcher) Iter(f IterFunc) {
+func (m Matcher) Iter(f IterFunc) {
 	m.RLock()
 	defer m.RUnlock()
 	m.innerMatcher.Iter(f)
