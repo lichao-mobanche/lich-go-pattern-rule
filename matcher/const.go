@@ -31,4 +31,5 @@ type matcherHandler interface {
 	Get(Pattern) (Pattern, interface{})
 	Delete(Pattern) (Pattern, interface{})
 	Iter(IterFunc)
+	Size() int
 }

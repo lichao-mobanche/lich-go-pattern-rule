@@ -93,3 +93,7 @@ func (m rgMatcher) Iter(f IterFunc) {
 		},
 	)
 }
+
+func (m rgMatcher) Size() int {
+	return m.unit.Size()
+}

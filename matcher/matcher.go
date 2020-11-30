@@ -62,3 +62,10 @@ func (m Matcher) Iter(f IterFunc) {
 	defer m.RUnlock()
 	m.innerMatcher.Iter(f)
 }
+
+// Size TODO
+func (m Matcher) Size() int {
+	m.RLock()
+	defer m.RUnlock()
+	return m.innerMatcher.Size()
+}
