@@ -117,3 +117,7 @@ func (s spMatcher) Iter(f IterFunc) {
 		},
 	)
 }
+
+func (s spMatcher) Size() int {
+	return s.unit.Size()
+}
