@@ -121,3 +121,10 @@ func (s spMatcher) Iter(f IterFunc) {
 func (s spMatcher) Size() int {
 	return s.unit.Size()
 }
+
+func (s spMatcher) CheckPattern(pattern string)(string, error){
+	if !strings.HasPrefix(string(pattern), "/"){
+		return "", fmt.Errorf("illegal pattern %s", pattern)
+	}
+	return pattern, nil
+}

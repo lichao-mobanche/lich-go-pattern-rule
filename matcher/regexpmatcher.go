@@ -97,3 +97,12 @@ func (m rgMatcher) Iter(f IterFunc) {
 func (m rgMatcher) Size() int {
 	return m.unit.Size()
 }
+
+func (m rgMatcher) CheckPattern(pattern string)(string, error){
+	rg, e := regexp.Compile(string(pattern))
+	prefix, _ := rg.LiteralPrefix()
+	if e != nil || !strings.HasPrefix(prefix, "/") {
+		return "", fmt.Errorf("illegal pattern %s", pattern)
+	}
+	return pattern, nil
+}

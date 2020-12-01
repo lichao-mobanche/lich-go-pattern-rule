@@ -69,3 +69,10 @@ func (m Matcher) Size() int {
 	defer m.RUnlock()
 	return m.innerMatcher.Size()
 }
+
+// CheckPattern TODO
+func (m Matcher) CheckPattern(pattern string)(string, error) {
+	m.RLock()
+	defer m.RUnlock()
+	return m.innerMatcher.CheckPattern(pattern)
+}

@@ -32,4 +32,5 @@ type matcherHandler interface {
 	Delete(Pattern) (Pattern, interface{})
 	Iter(IterFunc)
 	Size() int
+	CheckPattern(pattern string)(string, error)
 }
