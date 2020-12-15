@@ -79,8 +79,8 @@ func (s *spMatcher) Load(pattern Pattern, rule interface{}) (Pattern, interface{
 	}
 	iid := pattern.ItemID()
 	if item := s.unit.Get(iid); item != nil {
-		oldRule := item.(*matchUnit).rule
-		item.(*matchUnit).rule = rule
+		oldRule := item.(*simpleMatchUnit).rule
+		item.(*simpleMatchUnit).rule = rule
 		return pattern, oldRule, nil
 	}
 
